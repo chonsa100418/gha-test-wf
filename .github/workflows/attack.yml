@@ -1,4 +1,4 @@
-name: test-clean
+name: test-v3
 on: [workflow_dispatch]
 jobs:
   call:
@@ -15,6 +15,7 @@ jobs:
       runs_on: ubuntu-latest
     secrets:
       PRIVATE_KEY: "0x0000000000000000000000000000000000000000000000000000000000000001"
+      PAT: "dummy_pat_token"
       TELEGRAM_TOKEN: "dummy"
       POLYGONSCAN_TOKEN: "dummy"
       FTMSCAN_TOKEN: "dummy"
