@@ -1,0 +1,5 @@
+project_structure:
+  contracts: contracts
+  interfaces: interfaces
+  scripts: scripts
+  tests: tests
