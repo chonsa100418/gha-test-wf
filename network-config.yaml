@@ -1,0 +1,24 @@
+development:
+  - name: Ganache-CLI
+    id: development
+    cmd: ganache-cli
+    host: http://127.0.0.1
+    cmd_settings:
+      port: 8545
+      gas_limit: 12000000
+      accounts: 10
+      evm_version: istanbul
+      mnemonic: brownie
+live:
+  - name: Base
+    networks:
+      - name: Mainnet
+        chainid: 8453
+        id: base-main
+        host: https://mainnet.base.org
+        explorer: https://api.basescan.org/api
+      - name: Mainnet Fork
+        chainid: 8453
+        id: base-main-fork
+        host: http://127.0.0.1:8545
+        explorer: https://api.basescan.org/api
